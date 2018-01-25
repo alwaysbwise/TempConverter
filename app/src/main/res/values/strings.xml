@@ -2,4 +2,5 @@
     <string name="app_name">Temp Converter</string>
     <string name="inputLabel">Fahrenheit</string>
     <string name="outputLabel">Celsius</string>
+    <string name="degrees">Degrees</string>
 </resources>
