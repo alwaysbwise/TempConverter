@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import java.text.NumberFormat;
 
+import static java.lang.Float.*;
+
 public class MainActivity extends Activity
         implements TextView.OnEditorActionListener {
     // define widget variable
@@ -16,7 +18,7 @@ public class MainActivity extends Activity
 
     //define instance variables - not saved
     private String temperatureValueString = "";
-   //private
+    private float celsiusTemp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,20 +44,19 @@ public class MainActivity extends Activity
         //take user entry convert/parse to float
        temperatureValueString = inputeditText.getText().toString();
        float temperatureValue;
-       /*double celsiusTemp = 100.055564;
+
         if (temperatureValueString.equals("")){
            temperatureValue = 0;
         }
         else {
-           temperatureValue = Float.parseFloat(temperatureValueString);
-           //calculate temperature
-           celsiusTemp = (temperatureValue - 32) * (5/9);
-        }*/
-        temperatureValue = Float.parseFloat(temperatureValueString);
-        double celsiusTemp = (temperatureValue - 32) * (5 / 9);
+           temperatureValue = parseFloat(temperatureValueString);
+           celsiusTemp = (temperatureValue - 32) * 5/9;
+        }
+
+
         //display
-        //NumberFormat display = NumberFormat.getInstance();
-        outputtextView.setText((int) celsiusTemp);
+        NumberFormat display = NumberFormat.getInstance();
+        outputtextView.setText(display.format(celsiusTemp));
 
     } //end calculateAndDisplay method 
 }//end main activity
