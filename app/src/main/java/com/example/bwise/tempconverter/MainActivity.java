@@ -37,25 +37,25 @@ public class MainActivity extends Activity
         return false;
     }//end onEditorAction
 
-    public void calculateAndDisplay() {
+    private void calculateAndDisplay() {
         //c=(F-32)*5/9
         //take user entry convert/parse to float
        temperatureValueString = inputeditText.getText().toString();
        float temperatureValue;
-      // float celsiusTemp;
-
-
-       if (temperatureValueString.equals("")){
+       /*double celsiusTemp = 100.055564;
+        if (temperatureValueString.equals("")){
            temperatureValue = 0;
-       }
-       else {
+        }
+        else {
            temperatureValue = Float.parseFloat(temperatureValueString);
-       }
-       //calculate temperature
-        float celsiusTemp = (temperatureValue - 32) * (5/9);
+           //calculate temperature
+           celsiusTemp = (temperatureValue - 32) * (5/9);
+        }*/
+        temperatureValue = Float.parseFloat(temperatureValueString);
+        double celsiusTemp = (temperatureValue - 32) * (5 / 9);
         //display
-        //NumberFormat numberFormat = NumberFormat.getNumberInstance();
-        outputtextView.setText(String.valueOf(celsiusTemp));
+        //NumberFormat display = NumberFormat.getInstance();
+        outputtextView.setText((int) celsiusTemp);
 
     } //end calculateAndDisplay method 
 }//end main activity
