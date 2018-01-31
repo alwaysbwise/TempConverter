@@ -17,8 +17,8 @@ public class MainActivity extends Activity
     private TextView outputtextView;
 
     //define instance variables - not saved
-    private String temperatureValueString = "";
-    private float celsiusTemp;
+    public String temperatureValueString = "";
+    public float celsiusTemp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +31,16 @@ public class MainActivity extends Activity
 
         //listener
         inputeditText.setOnEditorActionListener(this);
+    }
+
+    @Override
+    public void onPause (){
+        super.onPause();  // Always call the superclass method first
+    }
+
+    @Override
+    public void onResume (){
+        super.onResume();  // Always call the superclass method first
     }
 
     @Override
