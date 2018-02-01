@@ -1,10 +1,12 @@
 package com.example.bwise.tempconverter;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.widget.EditText;
 import android.widget.TextView;
+
 
 import java.text.NumberFormat;
 
@@ -20,6 +22,10 @@ public class MainActivity extends Activity
     public String temperatureValueString = "";
     public float celsiusTemp;
 
+    // define the SharedPreferences object
+    private SharedPreferences savedValues;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,15 +37,22 @@ public class MainActivity extends Activity
 
         //listener
         inputeditText.setOnEditorActionListener(this);
+        savedValues = getSharedPreferences("SavedValues", MODE_PRIVATE);
     }
 
     @Override
     public void onPause (){
         super.onPause();  // Always call the superclass method first
+        SharedPreferences.Editor editor = savedValues.edit();
+        editor.putString("temperatureValue", temperatureValueString );
+        editor.commit();
     }
 
     @Override
     public void onResume (){
+        temperatureValueString = savedValues.getString("temperatureValue", "");
+        inputeditText.setText(temperatureValueString);
+        calculateAndDisplay();
         super.onResume();  // Always call the superclass method first
     }
 
